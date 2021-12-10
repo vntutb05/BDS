@@ -1,5 +1,5 @@
 const multer = require('multer');
-const ConnectMysql = require('../database');
+const ConnectMysql = require('../../core/database');
 
 const multerConfig = multer.diskStorage({
     destination: (req, files, callback) => {
