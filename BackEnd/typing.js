@@ -1,7 +1,7 @@
 TypeProduct ={
     "DuAn" : 0,
     "MatDuong" : 1,
-    "DatVuon" : 1,
+    "DatVuon" : 2,
 }
 Category = {
     "DuAn" : "du-an",

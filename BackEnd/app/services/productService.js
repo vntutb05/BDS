@@ -64,7 +64,6 @@ module.exports = {
             }
         }
         const sql = `SELECT * FROM Real_estate WHERE category = ${type} ${sortSql}`
-        console.log(sql)
         await conn.query(sql,(err, result)=>{
             if (err){
                 return res.status(500).json({
@@ -79,4 +78,31 @@ module.exports = {
             })
         })
     },
+    getDetail : async(req,res) => {
+        const param = req.params
+        const id = req.params.id
+        if(id != undefined){
+            const sql = `SELECT * FROM Real_estate WHERE id = ${id}`
+            await conn.query(sql,(err, result)=>{
+                if (err || result.length == 0){
+                    return res.status(500).json({
+                        status : 500,
+                        message : "Error",
+                        data :[]
+                    })
+                } 
+                return res.status(200).json({
+                    status : 200,
+                    message : `Get detail product with id ${id}`,
+                    data : result
+                })
+            })
+        }else{
+            return res.status(400).json({
+                status : 400,
+                message : "Page not found",
+                data :[]
+            })
+        }
+    }
 }

@@ -9,6 +9,8 @@ module.exports = {
     productBytype : async(req,res) => {
         return await productService.getProductByType(req,res)
     },
-   
+    getDetail : async(req,res) => {
+        return await productService.getDetail(req,res)
+    }
 }
     
