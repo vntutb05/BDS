@@ -1,8 +1,10 @@
 const adminService = require('../services/adminService')
 module.exports = {
-    index : async(req,res) => {
-        console.log("Helolo")
-        return adminService.index(req,res)
+    postProduct : async(req,res) => {
+        return adminService.createProduct(req,res)
+    },
+    deleteProduct : async(req,res) =>{
+        return adminService.deleteProduct(req,res)
     }
 }
     

@@ -4,7 +4,7 @@ module.exports = {
         return await productService.getHotProduct(req,res)
     },
     allProduct : async(req,res) => {
-        return await productService.getHotProduct(req,res)
+        return await productService.getAllProduct(req,res)
     },
     productBytype : async(req,res) => {
         return await productService.getProductByType(req,res)

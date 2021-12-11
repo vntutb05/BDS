@@ -2,7 +2,7 @@ const {conn} = require('../../core/database');
 const {TypeProduct,Category} = require('../../typing')
 module.exports = {
     getHotProduct : async (req,res) =>{
-        const sql = `SELECT * FROM Real_estate WHERE hotProduct = 1`
+        const sql = `SELECT * FROM Real_estate WHERE hotProduct = 1 AND isDeleted = 0`
         await conn.query(sql,(err, result)=>{
             if (err){
                 return res.status(500).json({
@@ -18,7 +18,7 @@ module.exports = {
         })
     },
     getAllProduct : async (req,res) => {
-        const sql = `SELECT * FROM Real_estate`
+        const sql = `SELECT * FROM Real_estate WHERE isDeleted = 0`
         await conn.query(sql,(err, result)=>{
             if (err){
                 return res.status(500).json({
@@ -63,7 +63,7 @@ module.exports = {
                 sortSql = `AND ${min} < area < ${max}`
             }
         }
-        const sql = `SELECT * FROM Real_estate WHERE category = ${type} ${sortSql}`
+        const sql = `SELECT * FROM Real_estate WHERE category = ${type} AND isDeleted = 0 ${sortSql} `
         await conn.query(sql,(err, result)=>{
             if (err){
                 return res.status(500).json({

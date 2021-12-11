@@ -26,7 +26,7 @@ exports.upload = (req, res) => {
     let array = [];
     for (let i = 0; i < req.files.length; i++) {
         if (req.files[i].filename)
-            array.push(`"http://localhost:3001/static/image/${req.files[i].filename}"`);
+            array.push(`"${req.files[i].filename}"`);
     }
     //console.log('arrayarrayarrayarray', array);
     let data = req.body;

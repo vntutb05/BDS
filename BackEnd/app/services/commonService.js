@@ -3,7 +3,7 @@ module.exports = {
     search : async (req,res) =>{
         let body = req.body;
         if(body.q && body.q != ''){
-            const sql = `SELECT * FROM Real_estate WHERE name LIKE "%${body.q}%"`
+            const sql = `SELECT * FROM Real_estate WHERE name LIKE "%${body.q}% AND isDeleted = 0"`
             await conn.query(sql,(err, result)=>{
                 if (err){
                     return res.status(500).json({
