@@ -13,26 +13,22 @@ const multerConfig = multer.diskStorage({
 
 const upload = multer({
     storage: multerConfig,
-    //fileFilter: isImage,
 })
-//exports.uploadImage = upload.single('photo');
 exports.uploadImage = upload.array('myFiles', 12)
 
 
 
 exports.upload = (req, res) => {
-    console.log("reqq body",req.body["area"]);
-    //console.log('hâhhahahaahah', req.body);
     let array = [];
-    for (let i = 0; i < req.files.length; i++) {
+    for (let i = 0; i < req.files.length || 0; i++) {
         if (req.files[i].filename)
             array.push(`"${req.files[i].filename}"`);
     }
     //console.log('arrayarrayarrayarray', array);
     let data = req.body;
     data = { ...data, 'ImgArray': '[' + array + ']' }
+    console.log('arrayarrayarray', data);
     delete data.myFiles;
-    //console.log('sssssssss', data);
 
     //let sql = "insert into Real_estate(tinh, huyen, xa, category, hotProduct, forYouProduc, name, description, area, price, duong, phapLy, thoCu, matTien, ImgUrl) values";
     let sql = "insert into Real_estate SET ?";
